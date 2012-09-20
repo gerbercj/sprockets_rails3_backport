@@ -165,7 +165,11 @@ module Sprockets
           if ext && File.extname(source).empty?
             "#{source}.#{ext}"
           else
-            source
+            if source =~ /#{ext}$/
+              source
+            else
+              "#{source}.#{ext}"
+            end
           end
         end
       end
